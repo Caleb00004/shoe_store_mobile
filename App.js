@@ -1,20 +1,129 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native'
+import GetStarted from './screens/getStarted';
+import Home from './screens/Home';
+import OrderScreen from './screens/Order';
+import ShoeScreen from './screens/Shoe';
+import ExploreScreen from './screens/ExploreScreen';
+import Navigation from './components/Navigation';
+import Layout from './components/Layout';
+import { ContextProvider } from './components/context';
 
-export default function App() {
+const Stack = createNativeStackNavigator()
+
+// function Sphere(props) {
+//   const meshRef = useRef()
+
+//   useFrame((state, delta) => {
+//     meshRef.current.rotation.y += delta
+//     meshRef.current.rotation.x += delta
+//   })
+  
+//   return (
+//     <mesh 
+//       ref={meshRef}
+//       {...props}
+//     >
+//       <boxGeometry />
+//       <meshStandardMaterial color={'orange'} />
+//     </mesh>
+//   )
+// }
+
+const LayoutStack = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Stack.Navigator 
+      initialRouteName='/'
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        animation:'slide_from_right'
+      }}
+    >
+       <Stack.Screen 
+          name='/'
+          component={GetStarted}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen 
+          name='Home'
+          component={Layout}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen 
+          name='shoe'
+          component={ShoeScreen}
+          options={{
+            headerShown: false,
+            animation:'slide_from_bottom'
+          }}
+        />
+    </Stack.Navigator>
+  )
+}
+// const MainStack = () => {
+//   return (
+//     <Stack.Navigator 
+//       initialRouteName='/'
+//       screenOptions={{
+//         gestureEnabled: true,
+//         gestureDirection: 'horizontal',
+//         animation:'slide_from_right'
+//       }}
+//     >
+//       <Stack.Screen 
+//         name='/'
+//         component={GetStarted}
+//         options={{
+//           headerShown: false
+//         }}
+//       />
+//       <Stack.Screen 
+//         name='Home'
+//         component={Home}
+//         options={{
+//           headerShown: false
+//         }}
+//       />
+//       <Stack.Screen 
+//         name='Explore'
+//         component={ExploreScreen}
+//         options={{
+//           headerShown: false
+//         }}
+//       />
+
+//     </Stack.Navigator>
+//   )
+// }
+
+
+export default function App(props) {
+  console.log('APPS')
+  return (
+    <>
+      <ContextProvider>
+        <NavigationContainer>
+          <LayoutStack />
+        </NavigationContainer>
+      </ContextProvider>
+    </>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// export default function App(props) {
+//   console.log(props)
+//   return (
+//     <>
+//       <NavigationContainer>
+//         <MainStack />
+//       </NavigationContainer>    
+//       <Navigation />
+//     </>
+//   )
+// }
+
