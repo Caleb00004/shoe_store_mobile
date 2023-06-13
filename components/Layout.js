@@ -8,8 +8,11 @@ import ExploreScreen from '../screens/ExploreScreen';
 import Navigation from "./Navigation";
 import TopNav from "./Navigation";
 import { useState } from "react";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 
 const Stack = createNativeStackNavigator()
+
+const Tab = createBottomTabNavigator()
 
 const MainStack = () => {
 
@@ -19,7 +22,7 @@ const MainStack = () => {
             screenOptions={{
                 gestureEnabled: true,
                 gestureDirection: 'horizontal',
-                animation:'slide_from_right'
+                animation:'slide_from_right',
             }}
         >
             <Stack.Screen 
@@ -47,6 +50,25 @@ const MainStack = () => {
     )
 }
 
+// export default function BottomTabs() {
+//     return (
+//         <Tab.Navigator
+//             screenOptions={{
+//                 tabBarStyle: {
+//                     position: 'absolute',
+//                     justifyContent: 'space-around',
+//                     elevation: 10,
+//                     borderColor: 'gray'
+//                 },
+//                 headerShown: false
+//             }}
+//         >
+//             <Tab.Screen name="display" component={Home} />
+//             <Tab.Screen name="Explore" component={ExploreScreen} />
+//             <Tab.Screen name="Order" component={OrderScreen} />
+//         </Tab.Navigator>
+//     )
+// }
 
 export default function Layout({navigation}) {
     console.log('LAYOUT')

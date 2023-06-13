@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, Image, ScrollView, Pressable } from "react-nati
 import TopNav from "../components/TopNav";
 import ShoeSvg from '../assets/ShoeTest.svg'
 import OrderPlaced from "../components/OrderPlaced";
+import { useContext } from "react";
+import { appContext } from "../components/context";
 import { useState } from "react";
 import {jordanData} from '../data'
 import { nikeData } from "../data";
@@ -10,6 +12,7 @@ import { addidasData } from "../data";
 export default function ShoeScreen({navigation, route}) {
     const [modalVisible, setModalVisible] = useState(false)
     const {id, type} = route.params
+    const {updateCart} = useContext(appContext)
 
     function handleModal() {
         setModalVisible(prev => !prev)
@@ -65,8 +68,11 @@ export default function ShoeScreen({navigation, route}) {
                     </View>
                 </View>
             </ScrollView>
-            <Pressable style={{padding: 15, alignItems: 'center', backgroundColor: color, marginBottom: 10, marginHorizontal: 15}} onPress={() => handleModal()}>
-                <Text style={{color: 'white'}}>Place Order</Text>
+            <Pressable 
+                style={{padding: 15, alignItems: 'center', backgroundColor: color, marginBottom: 10, marginHorizontal: 15}}
+                onPress={() => (updateCart(id) , handleModal())}
+            >
+                <Text style={{color: 'white'}}>Add To Cart</Text>
             </Pressable>
         </View>
     )

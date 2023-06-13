@@ -15,7 +15,7 @@ export default function Navigation({navigation }) {
     return (
         <View style={style.nav}>
             <Pressable 
-                onPress={() => (updateState('home'), navigation.navigate('display'))}
+                onPress={() => (updateState('home'), navigation.push('display'))}
                 style={currentScreen == 'home' ? [style.outerCurrent, {paddingHorizontal: 4}] : {paddingHorizontal: 4}}
                 android_ripple={{color: 'grey'}}
             >   
@@ -25,7 +25,7 @@ export default function Navigation({navigation }) {
             </Pressable>
             {/* <Pressable style={({pressed}) => pressed && {transform: [{scale: 1.3}], backgroundColor: 'red'}}> */}
             <Pressable 
-                onPress={() => (updateState('explore'), navigation.navigate('Explore'))} 
+                onPress={() => (updateState('explore'), navigation.push('Explore'))} 
                 style={currentScreen == 'explore' ? [style.outerCurrent, {paddingHorizontal: 4}] : {paddingHorizontal: 4}}
                 android_ripple={{color: 'grey'}}
             >
@@ -37,7 +37,7 @@ export default function Navigation({navigation }) {
             <Pressable 
                 android_ripple={{color: 'grey'}} // for Andriod
                 style={currentScreen == 'order' ? [style.Order_outerCurrent, {paddingHorizontal: 4}] : {paddingHorizontal: 4}}
-                onPress={() => (updateState('order'), navigation.navigate('Order'))}
+                onPress={() => (updateState('order'), navigation.push('Order'))}
             >
                 <View style={currentScreen == 'order' &&  style.Order_container}>
                     <FontAwesome name="lock" size={currentScreen == 'order' ? 40 : 25} color={currentScreen == 'order' ? 'white' : 'gray'} />

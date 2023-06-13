@@ -1,5 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
+import {ActivityIndicator} from 'react-native'
 import GetStarted from './screens/getStarted';
 import Home from './screens/Home';
 import OrderScreen from './screens/Order';
@@ -7,8 +8,11 @@ import ShoeScreen from './screens/Shoe';
 import ExploreScreen from './screens/ExploreScreen';
 import Navigation from './components/Navigation';
 import Layout from './components/Layout';
+import BottomTabs from './components/Layout';
+import { useScreens } from 'react-native-screens'
 import { ContextProvider } from './components/context';
 
+console.log(useScreens)
 const Stack = createNativeStackNavigator()
 
 // function Sphere(props) {

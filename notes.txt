@@ -1,0 +1,26 @@
+    SLIDE TO DELETE
+For the SLide to Delete Functionality,
+I Made use of 'react-native-swipe-list-view' Package.
+
+`npm install --save react-native-swipe-list-view`
+
+Link to npm Docs for more Explanation: https://www.npmjs.com/package/react-native-swipe-list-view
+
+
+    BOTTOM SHEET
+For the Bottom sheet in the order screen, I made use of `reanimated-bottom-sheet` package
+
+
+`npm install reanimated-bottom-sheet`
+
+Note: AFter Installing this, you will also need to install react-native-gesture-handler and react-native-reanimated.
+
+If you're using expo for your react native project
+`expo install react-native-gesture-handler react-native-reanimated`
+
+If Not, you can just write
+`npm install react-native-reanimated react-native-gesture-handler`
+
+
+
+
