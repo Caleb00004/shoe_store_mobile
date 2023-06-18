@@ -5,7 +5,7 @@ import ProfileSvg from '../assets/nav_icons/profile.svg'
 export default function TopNav({navigation}) {
     return (
         <View style={style.nav}>
-            <Pressable onPress={() => navigation.popToTop()}>
+            <Pressable onPress={() => navigation.navigate('Home')}>
                 <MenuSvg 
                     width="50"
                     height="50"
@@ -16,7 +16,6 @@ export default function TopNav({navigation}) {
                 width="50"
                 height="50"            
             />
-            {/* <Image source={require('../assets/nav_icons/profile.svg')}/> */}
         </View>
     )
 }
@@ -24,8 +23,6 @@ export default function TopNav({navigation}) {
 const style = StyleSheet.create({
     nav: {
         flexDirection: 'row',
-        // position: 'absolute',
-        // top: 0,
         backgroundColor: 'white',
         width: '100%',
         paddingTop: 40,

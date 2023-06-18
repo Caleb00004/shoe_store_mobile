@@ -4,12 +4,12 @@
     "slug": "shoe_store",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/sneakers.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/unsplash.jpg",
+      "image": "./assets/splash.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "#234378"
+      "backgroundColor": "#f28022"
     },
     "assetBundlePatterns": [
       "**/*"

@@ -5,7 +5,6 @@ import { useLoader } from '@react-three/fiber';
 import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 import { TextureLoader } from 'expo-three';
-// import { Sphere } from 'drei';
 // import * as SplashScreen from 'expo-splash-screen';
 
 
@@ -29,9 +28,9 @@ function Cone(props) {
     )  
   }
 
+// NOT NEEDED //////////////
 function Shoe(props) {
   console.log('SHOE COMPONENT')
-  // console.log(props)
     const shoeRef = useRef()
     const material = useLoader(MTLLoader, require('../assets/Airmax/shoe.mtl')) // loading the material of the 3d Object
     const obj = useLoader( // loading the 3D model/ object
@@ -76,13 +75,7 @@ function Shoe(props) {
     )
 }
 
-
-function Hello () {
-  return (
-    <Text>Hello Boy AN GIRL</Text>
-  )
-}
-
+// NOT NEEDED ////////////
 function CanvasContainer() {
   console.log('MY CANVASS')
     return (
@@ -102,7 +95,7 @@ function CanvasContainer() {
     )  
 }
   
-export default function GetStarted({navigation}) {
+export default function GetStarted({navigation, setDisplayStart}) {
 
     const [appReady, setAppReady] = useState(true)
   
@@ -126,20 +119,7 @@ export default function GetStarted({navigation}) {
     // }
 
     return (
-        // <View onLayout={onLayoutRootView}>
         <View style={{display:'flex', flexDirection:'column', justifyContent: 'space-around', flex:1}}>
-
-          {/* <Canvas>
-              <Sphere>
-                <meshStandardMaterial color="orange" />
-              </Sphere>
-            </Canvas> */}
-          {/* <Canvas>
-            <mesh>
-              <sphereGeometry />
-              <meshStandardMaterial color="orange" />
-            </mesh>
-          </Canvas> */}
 
           <View style={{paddingTop: 40, paddingLeft: 30, alignItems: 'center'}}>
             <Image 
@@ -163,10 +143,12 @@ export default function GetStarted({navigation}) {
             />
             <Text style={{padding: 10, fontSize: 25, textAlign: 'center'}}>Just do it with Nike</Text>
             <Text style={{color: 'grey', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' , width: '80%'}} >Get access to more than 1000 nike shoes also another brands with %20 off</Text>
-            <Pressable onPress={() => navigation.navigate('Home')}>
-                <View style={{height: 40, width: '80%', backgroundColor: 'orange', marginLeft: 'auto', marginRight:'auto', marginBottom: 20, marginTop: 30, justifyContent: 'center', alignItems:'center'}}>
-                  <Text style={{color: 'white'}}>Continue</Text>
-                </View>
+            <Pressable 
+              onPress={() => setDisplayStart(false)}
+              style={{height: 40, width: '80%', backgroundColor: 'orange', marginLeft: 'auto', marginRight:'auto', marginBottom: 20, marginTop: 30, justifyContent: 'center', alignItems:'center'}}
+              android_ripple={{color: 'grey'}}
+            >
+              <Text style={{color: 'white'}}>Continue</Text>
             </Pressable>
           </View>
         </View>
@@ -174,22 +156,13 @@ export default function GetStarted({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    // container: {
-    //   flex: 1,
-    //   backgroundColor: '#fff',
-    //   alignItems: 'center',
-    //   justifyContent: 'center',
-    // },
     test: {
       flex: 1,
-    //   backgroundColor: 'orange',
-    //   borderWidth: 1,
     },
     image: {
       height: '45%',
       width: '100%',
       resizeMode: 'contain',
-      // transform: [{rotateZ: "-20deg"}, {rotateY: "180deg"}] 
       transform: [{rotateZ: "-20deg"}] 
   },
     container: {

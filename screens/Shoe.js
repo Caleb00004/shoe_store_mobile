@@ -1,8 +1,7 @@
 import { View, Text, StyleSheet, Image, ScrollView, Pressable } from "react-native";
 import TopNav from "../components/TopNav";
-import ShoeSvg from '../assets/ShoeTest.svg'
-import OrderPlaced from "../components/OrderPlaced";
-import { useContext } from "react";
+import Modal from "../components/Modal";
+import { useContext, useLayoutEffect, useEffect } from "react";
 import { appContext } from "../components/context";
 import { useState } from "react";
 import {jordanData} from '../data'
@@ -13,9 +12,20 @@ export default function ShoeScreen({navigation, route}) {
     const [modalVisible, setModalVisible] = useState(false)
     const {id, type} = route.params
     const {updateCart} = useContext(appContext)
+    const [addToCartStatus, setAddToCartStatus] = useState('idle')
 
-    function handleModal() {
-        setModalVisible(prev => !prev)
+    console.log(addToCartStatus)
+
+    function handleCart() {
+        if(addToCartStatus == 'idle') {
+            setAddToCartStatus('pending')
+            setModalVisible(true)
+            updateCart(id)
+        }
+    }
+
+    function closeModal() {
+        setModalVisible(false)
     }
 
 
@@ -33,7 +43,7 @@ export default function ShoeScreen({navigation, route}) {
         <View style={styles.screen}>
             <TopNav navigation={navigation}/>
             
-            <OrderPlaced visible={modalVisible} handleModal={handleModal}/>
+            <Modal visible={modalVisible} handleModal={closeModal} text={'Added to cart'}/>
 
             <ScrollView>
                 <View style={{paddingLeft: 15}}>
@@ -68,9 +78,11 @@ export default function ShoeScreen({navigation, route}) {
                     </View>
                 </View>
             </ScrollView>
+
             <Pressable 
                 style={{padding: 15, alignItems: 'center', backgroundColor: color, marginBottom: 10, marginHorizontal: 15}}
-                onPress={() => (updateCart(id) , handleModal())}
+                onPress={() => handleCart()}
+                android_ripple={{color: 'grey'}}
             >
                 <Text style={{color: 'white'}}>Add To Cart</Text>
             </Pressable>
@@ -93,8 +105,6 @@ const styles = StyleSheet.create({
         width: "90%",
         paddingRight: 70,
         marginLeft: "auto",
-        // backgroundColor: '#FFB301',
-        // backgroundColor: color,
         height: 170,
         justifyContent: "center",
         alignItems: "center",
