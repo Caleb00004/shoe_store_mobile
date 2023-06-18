@@ -2,6 +2,7 @@
   "expo": {
     "name": "Shoe Store",
     "slug": "shoe_store",
+    "description": "This is an E-commerce application for shoes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/sneakers.png",
